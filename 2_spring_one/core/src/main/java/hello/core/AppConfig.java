@@ -22,14 +22,16 @@ public class AppConfig {
     //call AppConfig.memoryRepository
     @Bean
     public MemoryMemberRepository memberRepository() {
-        System.out.println("call AppConfig.memoryRepository");
-        return new MemoryMemberRepository();
+        MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+        System.out.println("call AppConfig.memoryRepository :" + memberRepository);
+        return memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        System.out.println("call AppConfig.memberService");
-        return new MemberServiceImpl(memberRepository());
+        MemberServiceImpl memberService = new MemberServiceImpl(memberRepository());
+        System.out.println("call AppConfig.memberService :" + memberService.getMemberRepository());
+        return memberService;
     }
 
     @Bean
